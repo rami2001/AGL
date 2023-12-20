@@ -22,7 +22,7 @@ import java.util.logging.Logger;
 
 import dao.*;
 
-public class BaseDeDonnees
+public class BDD
 {
     private static JdbcPooledConnectionSource connexion = null;
     final static private String SALT = "RLYTA";
@@ -67,6 +67,16 @@ public class BaseDeDonnees
         }
     }
 
+    public static void fermeture()
+    {
+        try
+        {
+            connexion.close();
+        } catch (Exception e)
+        {
+            throw new RuntimeException(e);
+        }
+    }
 
     public static String HashMotDePasse(String motDePasse)
     {
@@ -79,11 +89,9 @@ public class BaseDeDonnees
             byte resultat[] = md.digest();
             StringBuilder sb = new StringBuilder();
 
-            for (int i = 0; i < resultat.length; i++)
+            for (byte b : resultat)
             {
-                sb.append(Integer.toString(
-                        (resultat[i] & 0xff) + 0x100, 16).substring(1));
-
+                sb.append(Integer.toString((b & 0xff) + 0x100, 16).substring(1));
             }
 
             return sb.toString();
@@ -99,34 +107,7 @@ public class BaseDeDonnees
     {
         initialisation();
 
-//	Gestionnaire g = new Gestionnaire("a", "MDP");
-//	Bibliothecaire b = new Bibliothecaire("c", "MDP");
         Enseignant e = new Enseignant("d", "MDP", "TITOUN", "Rami", new Date(2023, 12, 15));
-//	EtudiantInterne ei = new EtudiantInterne("e", "MDP", "TITOUN", "Rami", new Date(2023, 12, 15), false, new Date(2023, 12, 15));
-//	EtudiantExterne ex = new EtudiantExterne("f", "MDP", "TITOUN", "Rami", new Date(2023, 12, 15), false);
-//
-//	DAO.Gestionnaire.create(g);
-//	DAO.Bibliothecaire.create(b);
-//	DAO.Enseignant.create(e);
-//	DAO.EtudiantInterne.create(ei);
-//	DAO.EtudiantExterne.create(ex);
-//
-//	System.out.println("Gestionnaire :");
-//	Gestionnaire q1 = DAO.Gestionnaire.queryForFirst();
-//	System.out.println(q1.getMail() + " " + q1.getMotDePasse());
-//
-//	System.out.println("Bibliothecaire :");
-//	Bibliothecaire q2 = DAO.Bibliothecaire.queryForFirst();
-//	System.out.println(q2.getMail() + " " + q2.getMotDePasse());
-//
-//	System.out.println("Enseignant:");
-//	Enseignant q3 = DAO.Enseignant.queryForFirst();
-//	System.out.println(q3.getMail() + " " + q3.getMotDePasse());
-//
-//	System.out.println("Etudiant :");
-//	EtudiantInterne q4 = DAO.EtudiantInterne.queryForFirst();
-//	System.out.println(q4.getMail() + " " + q4.getMotDePasse());
-//
         Livre l = new Livre("a", "b", "ISBN", 0, 0);
 
         DAO.Livre.create(l);

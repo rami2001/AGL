@@ -4,7 +4,7 @@ package model;
 import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 
-import utilites.BaseDeDonnees;
+import utilites.BDD;
 
 public abstract class Utilisateur
 {
@@ -22,7 +22,7 @@ public abstract class Utilisateur
     public Utilisateur(String mail, String motDePasse)
     {
 	this.mail = mail;
-	this.motDePasse = BaseDeDonnees.HashMotDePasse(motDePasse);
+	this.motDePasse = BDD.HashMotDePasse(motDePasse);
     }
 
     public String getMail()
@@ -42,7 +42,7 @@ public abstract class Utilisateur
 
     public void setMotDePasse(String motDePasse)
     {
-	this.motDePasse = BaseDeDonnees.HashMotDePasse(motDePasse);
+	this.motDePasse = BDD.HashMotDePasse(motDePasse);
     }
     
 }
