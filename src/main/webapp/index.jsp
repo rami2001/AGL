@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="styles/all.css">
     <link rel="stylesheet" href="styles/index.css">
+    <script src="jquery-3.7.1.js"></script>
 </head>
 
 <body>
@@ -22,5 +23,9 @@
         <a href="inscription.jsp">Inscrivez-vous.</a>
     </div>
 </main>
+
+    <script>
+        //TODO: do some stuff here
+    </script>
 </body>
 </html>
