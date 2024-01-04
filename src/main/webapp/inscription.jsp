@@ -37,22 +37,22 @@
             const emailField = form.querySelector('input[name="mail"]');
             const nomField = form.querySelector('input[name="nom"]');
             const prenomField = form.querySelector('input[name="prenom"]');
-            const erreur = form.querySelector('probleme')
+            const erreur = form.querySelector('.probleme')
 
             form.addEventListener('submit', function(event) {
                 if (!validateEmail(emailField.value)) {
                     event.preventDefault();
-                    erreur.innerHTML("Adresse mail invalide. ");
+                    erreur.innerHTML += "Adresse mail invalide. ";
                 }
 
                 if (!validateName(nomField.value)) {
                     event.preventDefault();
-                    erreur.innerHTML("Nom invalide. ");
+                    erreur.innerHTML += "Nom invalide. ";
                 }
 
                 if (!validateName(prenomField.value)) {
                     event.preventDefault();
-                    erreur.innerHTML("Prénom invalide. ");
+                    erreur.innerHTML += "Prénom invalide. ";
                 }
             });
 
@@ -99,6 +99,7 @@
             <input type="submit" value="S'inscrire">
 
             <div class="probleme">
+                abbouch
             </div>
         </form>
     </main>
