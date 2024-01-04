@@ -1,4 +1,4 @@
-package utilites;
+package bdd;
 
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcPooledConnectionSource;
@@ -16,7 +16,6 @@ import model.EtudiantInterne;
 import model.Gestionnaire;
 import model.Livre;
 
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -102,22 +101,4 @@ public class BDD
             return null;
         }
     }
-
-    public static void main(String[] args) throws SQLException
-    {
-        initialisation();
-
-        Enseignant e = new Enseignant("d", "MDP", "TITOUN", "Rami", new Date(2023, 12, 15));
-        Livre l = new Livre("a", "b", "ISBN", 0, 0);
-
-        DAO.Livre.create(l);
-        DAO.Enseignant.create(e);
-
-        Emprunt emp = new Emprunt(true, new Date(2023, 12, 15), new Date(2023, 12, 15));
-        emp.setAbonne(e);
-        emp.setLivre(l);
-
-        DAO.Emprunt.create(emp);
-    }
-
 }

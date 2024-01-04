@@ -4,7 +4,7 @@ package model;
 import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 
-import utilites.BDD;
+import bdd.BDD;
 
 public abstract class Utilisateur
 {
