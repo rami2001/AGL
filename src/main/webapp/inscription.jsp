@@ -6,13 +6,14 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BibTarga</title>
     <script src="jquery-3.7.1.js"></script>
-    <link rel="stylesheet" href="styles/all.css">
+    <link rel="stylesheet" href="styles/global.css">
     <link rel="stylesheet" href="styles/inscription.css">
 
     <script>
@@ -95,6 +96,10 @@
                 <label for="etudiantExterne">Etudiant externe</label>
             </div>
             <input type="submit" value="S'inscrire">
+
+            <div class="probleme">
+                Text generique
+            </div>
         </form>
     </main>
 </body>

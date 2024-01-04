@@ -1,0 +1,129 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: .3s ease-in-out;
+    font-family: 'Dosis', sans-serif;
+}
+
+body {
+    width: 100dvw;
+    min-height: 100dvh;
+}
+
+:root {
+    --rouge : #FF6B6B;
+    --rose : #fd7fba;
+    --noir : #282828;
+    --gris : gray;
+    --blanc : #f0f0f0;
+    --bleu : #3498DB;
+    --vert : #27AE60;
+    --nav-width : 90px;
+}
+
+nav {
+    position: fixed;
+    height: 100dvh;
+    top: 0;
+    left: 0;
+    width: var(--nav-width);
+    background-color: var(--noir);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+nav > a {
+    margin: 12px 0;
+    color: white;
+    font-size: 28px;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 4px;
+    position: relative;
+}
+
+nav > a:hover {
+    color: var(--vert);
+}
+
+
+nav > a::after {
+    content: attr(nav-item);
+    position: absolute;
+    top: 3.1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    color: var(--vert);
+    opacity: 0;
+    transition: .3s ease-in-out;
+}
+
+nav > a:not(.active):hover::after {
+    color: var(--vert);
+    opacity: 1;
+}
+
+nav > .active {
+    background-color: var(--vert);
+    color: var(--blanc);
+}
+
+nav > .active:hover {
+    color: var(--blanc);
+}
+
+.form > input,
+.formGroup > input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid var(--vert);
+    font-size: 22px;
+    padding: 8px 4px;
+    color: var(--noir);
+}
+
+.form > input::placeholder,
+.formGroup > input::placeholder {
+    color: gray;
+}
+
+.form > input[type=submit],
+.formGroup > input[type=submit] {
+    background-color: transparent;
+    border-radius: 6px;
+    padding: 12px 32px;
+    font-size: 24px;
+    color: var(--vert);
+    cursor: pointer;
+    border: 2px solid var(--vert);
+}
+
+.form > input[type=submit]:hover,
+.formGroup > input[type=submit]:hover {
+    background-color: var(--vert);
+    color: var(--blanc);
+}
+
+.page {
+    min-height: 100dvh;
+    width: calc(100dvw - var(--nav-width));
+    background-color: var(--blanc);
+    margin-left: 80px;
+    padding: 28px 32px;
+}
+
+.page > .titre {
+    font-size: 52px;
+}
+
+.page > hr {
+    margin: 28px 0;
+}
