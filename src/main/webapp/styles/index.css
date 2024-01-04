@@ -1,7 +1,7 @@
 .main {
     height: 100dvh;
     width: 100dvw;
-    background-image: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.75)), url(../public/bg1.jpg);
+    background-image: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.75)), url(../assets/bg1.jpg);
     background-position: center;
     background-size: cover;
     display: grid;
