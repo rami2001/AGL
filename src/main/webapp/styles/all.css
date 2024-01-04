@@ -79,8 +79,8 @@ nav > .active:hover {
     color: var(--blanc);
 }
 
-.form input[type=text],
-.formGroup > input[type=text] {
+.form > input,
+.formGroup > input {
     background-color: transparent;
     border: none;
     outline: none;
