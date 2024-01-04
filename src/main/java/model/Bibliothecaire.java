@@ -7,7 +7,7 @@ import java.util.Date;
 
 import com.j256.ormlite.table.DatabaseTable;
 
-import bdd.ENV;
+import util.ENV;
 
 @DatabaseTable(tableName = "bibliothecaire")
 public class Bibliothecaire extends Utilisateur
