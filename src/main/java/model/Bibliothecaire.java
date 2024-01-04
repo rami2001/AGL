@@ -55,7 +55,7 @@ public class Bibliothecaire extends Utilisateur
 	
 	LocalDate ld = Instant.ofEpochMilli(dateRetour.getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
 	
-	ld.plusMonths(1);
+	ld.plusMonths(ENV.PROLONGEMENT_EMPRUNT);
 	
 	dateRetour = Date.from(ld.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
 	emprunt.setDateRetour(dateRetour);

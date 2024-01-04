@@ -1,0 +1,32 @@
+.main {
+    height: 100dvh;
+    width: 100dvw;
+    background-image: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.75)), url(public/bg1.jpg);
+    background-position: center;
+    background-size: cover;
+    display: grid;
+    place-items: center;
+    padding-block: 5rem;
+}
+
+.form {
+    height: 420px;
+    width: 400px;
+    border-radius: 24px;
+    background-color: var(--blanc);
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0 22px;
+    align-items: center;
+    flex-direction: column;
+}
+
+.main > div {
+    color: var(--blanc);
+    font-size: 24px;
+    text-align: center;
+}
+
+.main > div > a {
+    color: var(--vert);
+}
