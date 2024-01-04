@@ -22,15 +22,11 @@
 
             confirmationMotDePasse.addEventListener('input', function() {
                 if (confirmationMotDePasse.value !== motDePasse.value) {
-                    confirmationMotDePasse.style.backgroundColor = '#fd7fba';
-                    confirmationMotDePasse.style.color = 'red';
+                    confirmationMotDePasse.style.backgroundColor = 'var(--rose)';
                     confirmationMotDePasse.style.borderColor = 'red';
-                    confirmationMotDePasse.style.opacity = '0.6';
                 } else {
                     confirmationMotDePasse.style.backgroundColor = '';
-                    confirmationMotDePasse.style.color = '';
                     confirmationMotDePasse.style.borderColor = '';
-                    confirmationMotDePasse.style.color = '1';
                 }
             });
         });
