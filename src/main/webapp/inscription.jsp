@@ -43,17 +43,22 @@
                 if (!validateEmail(emailField.value)) {
                     event.preventDefault();
                     erreur.innerHTML += "Adresse mail invalide. ";
+                    erreur.style.display = 'block';
                 }
 
                 if (!validateName(nomField.value)) {
                     event.preventDefault();
                     erreur.innerHTML += "Nom invalide. ";
+                    erreur.style.display = 'block';
                 }
 
                 if (!validateName(prenomField.value)) {
                     event.preventDefault();
                     erreur.innerHTML += "Prénom invalide. ";
+                    erreur.style.display = 'block';
                 }
+
+                erreut.stye.display = 'none';
             });
 
             function validateEmail(email) {
@@ -99,7 +104,6 @@
             <input type="submit" value="S'inscrire">
 
             <div class="probleme">
-                abbouch
             </div>
         </form>
     </main>
