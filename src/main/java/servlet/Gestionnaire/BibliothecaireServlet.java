@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(name = "BibliothecaireServlet", urlPatterns = "Gestionnaire/bibliotheciares")
+@WebServlet(name = "BibliothecaireServlet", urlPatterns = "/Gestionnaire/bibliotheciares")
 public class BibliothecaireServlet extends HttpServlet
 {
 
