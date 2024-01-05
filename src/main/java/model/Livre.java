@@ -25,11 +25,11 @@ public class Livre
     
     public Livre(String titre, String description, String isbn, int quantite, int quantiteDisponible)
     {
-	this.titre = titre;
-	this.description = description;
-	this.isbn = isbn;
-	this.quantite = quantite;
-	this.quantiteDisponible = quantiteDisponible;
+        this.titre = titre;
+        this.description = description;
+        this.isbn = isbn;
+        this.quantite = quantite;
+        this.quantiteDisponible = quantiteDisponible;
     }
 
     public String getTitre()

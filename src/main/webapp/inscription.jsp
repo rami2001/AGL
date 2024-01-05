@@ -17,6 +17,12 @@
     <link rel="stylesheet" href="styles/inscription.css">
 
     <script>
+        var errorMessage = '<%= request.getAttribute("errorMessage") %>';
+
+        if (!(errorMessage == 'null')) {
+            alert(errorMessage);
+        }
+
         document.addEventListener("DOMContentLoaded", function() {
             const motDePasse = document.querySelector('input[name="motDePasse"]');
             const confirmationMotDePasse = document.querySelector('input[name="confirmationMotDePasse"]');
@@ -33,28 +39,28 @@
         });
 
         document.addEventListener("DOMContentLoaded", function() {
-            const form = document.querySelector('.form');
             const emailField = form.querySelector('input[name="mail"]');
             const nomField = form.querySelector('input[name="nom"]');
             const prenomField = form.querySelector('input[name="prenom"]');
-            const erreur = form.querySelector('.probleme')
+            const form = document.querySelector('.form');
+            const erreur = form.querySelector('.probleme');
 
             form.addEventListener('submit', function(event) {
                 if (!validateEmail(emailField.value)) {
                     event.preventDefault();
-                    erreur.innerHTML += "Adresse mail invalide. ";
+                    erreur.innerHTML = "Adresse mail invalide. ";
                     erreur.style.display = 'block';
                 }
 
                 if (!validateName(nomField.value)) {
                     event.preventDefault();
-                    erreur.innerHTML += "Nom invalide. ";
+                    erreur.innerHTML = "Nom invalide. ";
                     erreur.style.display = 'block';
                 }
 
                 if (!validateName(prenomField.value)) {
                     event.preventDefault();
-                    erreur.innerHTML += "Prénom invalide. ";
+                    erreur.innerHTML = "Prénom invalide. ";
                     erreur.style.display = 'block';
                 }
 
@@ -77,7 +83,7 @@
 
 <body>
     <main class="main">
-        <form class="form" action="">
+        <form class="form" action="inscription" method="post">
             <div class="formGroup">
                 <input type="text" name="mail" placeholder="Adresse e-mail" required>
             </div>
@@ -92,7 +98,7 @@
             <div class="formGroup">
                 <p>Type de compte : </p>
 
-                <input type="radio" value="enseignant" id="enseignant" name="type"/>
+                <input type="radio" value="enseignant" id="enseignant" name="type" required/>
                 <label for="enseignant">Enseignant</label>
 
                 <input type="radio" value="etudiant" id="etudiant" name="type"/>

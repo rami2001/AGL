@@ -8,24 +8,26 @@
 
     <link rel="stylesheet" href="styles/all.css">
     <link rel="stylesheet" href="styles/index.css">
-    <script src="jquery-3.7.1.js"></script>
+    <script>
+        var errorMessage = '<%= request.getAttribute("errorMessage") %>';
+
+        if (!(errorMessage == 'null')) {
+            alert(errorMessage);
+        }
+    </script>
 </head>
 
 <body>
     <main class="main">
-    <form class="form" action="">
-        <input type="text" placeholder="Adresse e-mail" required>
-        <input type="password" placeholder="Mot de passe" required>
+    <form class="form" action="connexion" method="post">
+        <input type="text" placeholder="Adresse e-mail" name="mail" required>
+        <input type="password" placeholder="Mot de passe" name="motDePasse" required>
         <input type="submit" value="Se connecter">
     </form>
     <div>
         <p>Pas de compte ? </p>
-        <a href="inscription.jsp">Inscrivez-vous.</a>
+        <a href="inscription">Inscrivez-vous.</a>
     </div>
 </main>
-
-    <script>
-        //TODO: do some stuff here
-    </script>
 </body>
 </html>

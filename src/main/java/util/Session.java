@@ -20,4 +20,9 @@ public class Session
     {
         utilisateur = null;
     }
+
+    public static Utilisateur getUtilisateur()
+    {
+        return utilisateur;
+    }
 }

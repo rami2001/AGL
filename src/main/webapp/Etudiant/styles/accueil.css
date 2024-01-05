@@ -1,0 +1,21 @@
+.dashboard {
+    gap: 1rem;
+    display: flex;
+}
+
+.dashboard > .item {
+    border-radius: 2rem;
+    box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
+    font-size: 22px;
+    background-color: white;
+    flex-basis: 100%;
+    padding: 1rem 2rem;
+}
+
+.dashboard > .statut > span {
+    color: var(--vert);
+}
+
+.dashboard > .statut > .penalise {
+    color: var(--rouge);
+}

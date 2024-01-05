@@ -30,7 +30,7 @@ public class BDD
     {
         try
         {
-            connexion = new JdbcPooledConnectionSource("jdbc:sqlite:" + ENV.NOM_BDD);
+            connexion = new JdbcPooledConnectionSource("jdbc:sqlite:bdd.db");
 
             initialisationTables();
         } catch (SQLException e)
@@ -60,6 +60,9 @@ public class BDD
             TableUtils.createTableIfNotExists(connexion, EtudiantExterne.class);
             TableUtils.createTableIfNotExists(connexion, Livre.class);
             TableUtils.createTableIfNotExists(connexion, Emprunt.class);
+
+            Gestionnaire gestionnaire = new Gestionnaire("admin@bibtarga.dz", HashMotDePasse("admin"));
+            DAO.Gestionnaire.createIfNotExists(gestionnaire);
         } catch (SQLException e)
         {
             e.printStackTrace();

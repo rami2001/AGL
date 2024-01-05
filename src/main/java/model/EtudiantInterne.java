@@ -17,11 +17,11 @@ public class EtudiantInterne extends Etudiant
 
     }
     
-    public EtudiantInterne(String mail, String motDePasse, String nom, String prenom, Date dateInscription, boolean aPaye, Date dernierPaiement)
+    public EtudiantInterne(String mail, String motDePasse, String nom, String prenom, Date dateInscription, boolean aPaye, boolean estPenalise, Date dernierPaiement)
     {
-	super(mail, motDePasse, nom, prenom, dateInscription, aPaye);
+        super(mail, motDePasse, nom, prenom, dateInscription, aPaye, estPenalise);
 	
-	this.dernierPaiement = dernierPaiement;
+        this.dernierPaiement = dernierPaiement;
     }
 
     public Date getDernierPaiement()

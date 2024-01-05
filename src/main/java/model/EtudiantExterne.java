@@ -13,9 +13,9 @@ public class EtudiantExterne extends Etudiant
 
     }
     
-    public EtudiantExterne(String mail, String motDePasse, String nom, String prenom, Date dateInscription, boolean aPaye)
+    public EtudiantExterne(String mail, String motDePasse, String nom, String prenom, Date dateInscription, boolean aPaye, boolean estPenalise)
     {
-	super(mail, motDePasse, nom, prenom, dateInscription, aPaye);
+        super(mail, motDePasse, nom, prenom, dateInscription, aPaye, estPenalise);
     }
     
 }

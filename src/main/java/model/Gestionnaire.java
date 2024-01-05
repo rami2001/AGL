@@ -27,12 +27,12 @@ public class Gestionnaire extends Utilisateur
     
     public void confirmerInscription(EtudiantInterne etudiant)
     {
-	etudiant.aPaye(true);
-	
-	LocalDate ld = LocalDate.now();
-	
-	Date dateRenouvellement = Date.from(ld.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
-	etudiant.setDernierPaiement(dateRenouvellement);
+        etudiant.aPaye(true);
+
+        LocalDate ld = LocalDate.now();
+
+        Date dateRenouvellement = Date.from(ld.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+        etudiant.setDernierPaiement(dateRenouvellement);
     }
 
 }
