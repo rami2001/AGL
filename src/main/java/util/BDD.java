@@ -61,7 +61,7 @@ public class BDD
             TableUtils.createTableIfNotExists(connexion, Livre.class);
             TableUtils.createTableIfNotExists(connexion, Emprunt.class);
 
-            Gestionnaire gestionnaire = new Gestionnaire("admin@bibtarga.dz", HashMotDePasse("admin"));
+            Gestionnaire gestionnaire = new Gestionnaire("admin@bibtarga.dz", "admin");
             DAO.Gestionnaire.createIfNotExists(gestionnaire);
         } catch (SQLException e)
         {

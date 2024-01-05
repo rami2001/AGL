@@ -38,7 +38,7 @@
     <a href="" nav-item = "Inscriptions">
         <i class="bi bi-person-check"></i>
     </a>
-    <a href="" nav-item = "Renouvellement">
+    <a href="" nav-item = "Renouvellements">
         <i class="bi bi-coin"></i>
     </a>
     <a href="" nav-item = "Pénalisations">

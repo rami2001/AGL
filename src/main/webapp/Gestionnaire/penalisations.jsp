@@ -3,7 +3,7 @@
   Created by IntelliJ IDEA.
   User: Rami
   Date: 05/01/2024
-  Time: 03:56
+  Time: 22:29
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -17,7 +17,7 @@
 </head>
 <body>
 <nav class="nav">
-    <a href="" class="active" nav-item = "Mon compte">
+    <a href="accueil.jsp" nav-item = "Mon compte">
         <i class="bi bi-person"></i>
     </a>
     <a href="bibliothecaires.jsp" nav-item = "Bibliothécaires">
@@ -29,7 +29,7 @@
     <a href="renouvellements.jsp" nav-item = "Renouvellements">
         <i class="bi bi-coin"></i>
     </a>
-    <a href="penalisations.jsp" nav-item = "Pénalisations">
+    <a href="" class="active" nav-item = "Pénalisations">
         <i class="bi bi-exclamation-triangle"></i>
     </a>
     <a href="/deconnexion" nav-item = "Déconnexion">
@@ -41,7 +41,7 @@
     <%
         Gestionnaire gestionnaire = (Gestionnaire) Session.getUtilisateur();
     %>
-    <h1 class="titre">Bienvenue à l'espace gestionnaire.</h1>
+    <h1 class="titre">Gestion des pénalisations.</h1>
     <hr>
     <section class="dashboard">
     </section>
