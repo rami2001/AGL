@@ -39,10 +39,10 @@
         });
 
         document.addEventListener("DOMContentLoaded", function() {
+            const form = document.querySelector('.form');
             const emailField = form.querySelector('input[name="mail"]');
             const nomField = form.querySelector('input[name="nom"]');
             const prenomField = form.querySelector('input[name="prenom"]');
-            const form = document.querySelector('.form');
             const erreur = form.querySelector('.probleme');
 
             form.addEventListener('submit', function(event) {

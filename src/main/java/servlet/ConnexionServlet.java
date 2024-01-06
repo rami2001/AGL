@@ -49,7 +49,7 @@ public class ConnexionServlet extends HttpServlet
             {
                 Gestionnaire gestionnaire = gestionnaires.get(0);
                 Session.connexion(gestionnaire);
-                redirection = "/Gestionnaire/accueil.jsp";
+                redirection = "/Gestionnaire/accueil";
             }
 
             List<Bibliothecaire> bibliothecaires = DAO.Bibliothecaire.queryBuilder()

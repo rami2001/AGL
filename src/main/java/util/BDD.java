@@ -16,6 +16,8 @@ import model.EtudiantInterne;
 import model.Gestionnaire;
 import model.Livre;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -78,6 +80,12 @@ public class BDD
         {
             throw new RuntimeException(e);
         }
+    }
+
+    public static String getDate(Date date)
+    {
+        String pattern = "dd-MM-yyyy";
+        return new SimpleDateFormat(pattern).format(date);
     }
 
     public static String HashMotDePasse(String motDePasse)

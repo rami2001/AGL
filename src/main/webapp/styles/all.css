@@ -124,6 +124,6 @@ nav > .active:hover {
     font-size: 52px;
 }
 
-.page > hr {
-    margin: 28px 0;
+hr {
+    margin: 2rem 0;
 }

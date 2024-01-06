@@ -14,26 +14,26 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(name = "BibliothecaireServlet", urlPatterns = "Gestionnaire/bibliotheciares")
+@WebServlet(name = "BibliothecaireServlet", urlPatterns = "/Gestionnaire/bibliothecaires")
 public class BibliothecaireServlet extends HttpServlet
 {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         BDD.initialisation();
 
         try {
             List<Bibliothecaire> bibliothecaires = DAO.Bibliothecaire.queryForAll();
-            req.setAttribute("listeBibliothecaires", bibliothecaires);
+
+            request.setAttribute("bibliothecaires", bibliothecaires);
 
             BDD.fermeture();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
-        RequestDispatcher dispatcher = req.getRequestDispatcher("Gestionnaire/bibliothecaires.jsp");
-        dispatcher.forward(req, resp);
+        request.getRequestDispatcher("/Gestionnaire/bibliothecaires.jsp").forward(request, response);
     }
 
     @Override
@@ -44,11 +44,12 @@ public class BibliothecaireServlet extends HttpServlet
         BDD.initialisation();
         try
         {
-            if (DAO.Bibliothecaire.idExists(mail))
+            if (DAO.Bibliothecaire.idExists(mail) || DAO.EtudiantInterne.idExists(mail)
+                    || DAO.EtudiantExterne.idExists(mail) || DAO.Enseignant.idExists(mail))
             {
-                String errorMessage = "Un bibliothécaire avec cette adresse mail existe déjà !";
+                String errorMessage = "Un compte avec cette adresse mail existe déjà !";
                 request.setAttribute("errorMessage", errorMessage);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("Gestionnaire/bibliothecaires");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/Gestionnaire/accueil");
                 dispatcher.forward(request, response);
 
                 BDD.fermeture();
@@ -71,8 +72,7 @@ public class BibliothecaireServlet extends HttpServlet
             throw new RuntimeException(e);
         }
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("bibliothecaires");
-        dispatcher.forward(request, response);
+        response.sendRedirect("/Gestionnaire/bibliothecaires");
     }
 
 }

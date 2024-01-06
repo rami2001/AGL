@@ -15,7 +15,7 @@
     <title>BibTarga</title>
 
     <link rel="stylesheet" href="../styles/all.css">
-    <link rel="stylesheet" href="styles/accueil.css">
+    <link rel="stylesheet" href="styles/bibliothecaires.css">
 
     <script>
         var errorMessage = '<%= request.getAttribute("errorMessage") %>';
@@ -28,7 +28,7 @@
 </head>
 <body>
 <nav class="nav">
-    <a href="accueil.jsp" nav-item = "Mon compte">
+    <a href="accueil.jsp" nav-item = "Compte">
         <i class="bi bi-person"></i>
     </a>
     <a href="" class="active" nav-item = "Bibliothécaires">
@@ -51,31 +51,54 @@
 <main class="page">
     <%
         Gestionnaire gestionnaire = (Gestionnaire) Session.getUtilisateur();
+        String mail = gestionnaire.getMail();
     %>
     <h1 class="titre">Espace bibliothécaires.</h1>
+
     <hr>
+
     <section class="dashboard">
-        <form class="form" action="Gestionnaire/bibliothecaires" method="post">
+        <form class="form" action="bibliothecaires" method="post">
             <div class = "formGroup">
                 <input type="text" placeholder="Adresse e-mail" name="mail" required>
                 <input type="password" placeholder="Mot de passe" name="motDePasse" required>
                 <input type="submit" value="Ajouter">
             </div>
         </form>
-        <ul>
+
+        <hr>
+
+        <table>
+            <thead>
+            <tr>
+                <th>E-Mail</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
             <%
-                List<Bibliothecaire> bibliothecaires = (List<Bibliothecaire>) request.getAttribute("bibliothecairesList");
+                List<Bibliothecaire> bibliothecaires = (List<Bibliothecaire>) request.getAttribute("bibliothecaires");
                 if (bibliothecaires != null) {
                     for (Bibliothecaire bibliothecaire : bibliothecaires) {
             %>
-            <li>
-                <p>E-Mail : <% out.println(bibliothecaire.getMail()); %></p>
-            </li>
+            <tr>
+                <td><%= bibliothecaire.getMail() %></td>
+                <td>
+                    <form method="post" action="supprimer">
+                        <input type="hidden" name="mail" value="<%= bibliothecaire.getMail() %>">
+                        <button type="submit" class="btn btn-link p-0">
+                            <i class="bi bi-person-x"></i>
+                        </button>
+                    </form>
+                </td>
+            </tr>
             <%
                     }
                 }
             %>
-        </ul>
+            </tbody>
+        </table>
+
     </section>
 </main>
 </body>
