@@ -15,7 +15,8 @@ import util.Session;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.time.LocalDate;
+
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 
@@ -56,9 +57,10 @@ public class InscriptionServlet extends HttpServlet
         String prenom = request.getParameter("prenom");
         String type = request.getParameter("type");
 
-        LocalDate ld = LocalDate.now();
+        LocalDateTime ld = LocalDateTime.now();
 
-        Date date = Date.from(ld.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+
+        Date date = Date.from(ld.atZone(ZoneId.systemDefault()).toInstant());
 
         if (type != null) {
             switch (type) {
