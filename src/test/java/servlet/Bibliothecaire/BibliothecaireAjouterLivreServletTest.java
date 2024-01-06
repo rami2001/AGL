@@ -13,7 +13,8 @@ import java.io.IOException;
 
 import static org.mockito.Mockito.*;
 
-public class AjouterLivreTest {
+public class BibliothecaireAjouterLivreServletTest
+{
 
     @Mock
     HttpServletRequest request;
@@ -24,17 +25,17 @@ public class AjouterLivreTest {
     @Mock
     RequestDispatcher requestDispatcher;
 
-    AjouterLivre servlet;
+    BibliothecaireAjouterLivreServlet servlet;
 
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
-        servlet = new AjouterLivre();
+        servlet = new BibliothecaireAjouterLivreServlet();
     }
 
     @Test
     public void doGet_ForwardsToCorrectPage() throws ServletException, IOException {
-        when(request.getRequestDispatcher("/Bibliothecaire/AjoutLivre.jsp")).thenReturn(requestDispatcher);
+        when(request.getRequestDispatcher("/Bibliothecaire/accueil.jsp")).thenReturn(requestDispatcher);
 
         servlet.doGet(request, response);
 

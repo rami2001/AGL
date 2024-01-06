@@ -59,7 +59,7 @@ public class ConnexionServlet extends HttpServlet
             {
                 Bibliothecaire bibliothecaire = bibliothecaires.get(0);
                 Session.connexion(bibliothecaire);
-                redirection = "/Bibliothecaire/accueil.jsp";
+                redirection = "/Bibliothecaire/accueil";
             }
 
             List<Enseignant> enseignants = DAO.Enseignant.queryBuilder()

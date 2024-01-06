@@ -1,0 +1,36 @@
+.formGroup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6rem;
+    margin: 2rem 0;
+}
+
+form > input[name="quantite"] {
+    width: 3rem;
+}
+
+form > input[name="description"] {
+    width: 20rem;
+    height: 20rem;
+}
+
+textarea {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid var(--vert);
+    font-size: 22px;
+    padding: 8px 4px;
+    color: var(--noir);
+}
+
+textarea::placeholder {
+    color: var(--gris);
+}
+
+.dashboard > h1 {
+    margin-bottom: 2rem;
+    color: var(--vert);
+    text-align: center;
+}

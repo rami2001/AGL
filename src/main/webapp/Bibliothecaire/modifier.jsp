@@ -1,5 +1,6 @@
 <%@ page import="model.Bibliothecaire" %>
-<%@ page import="util.Session" %><%--
+<%@ page import="util.Session" %>
+<%@ page import="model.Livre" %><%--
   Created by IntelliJ IDEA.
   User: seylitanez
   Date: 2024-01-06
@@ -39,26 +40,28 @@
     <%
         Bibliothecaire bibliothecaire = (Bibliothecaire) Session.getUtilisateur();
         bibliothecaire.getMail();
+
+        Livre livre = (Livre) request.getAttribute("livre");
     %>
 
     <main class="page">
 
-        <h1>Espace bibliothécaire.</h1>
+        <h1>Modification du livre (<%= livre.getIsbn()%>).</h1>
 
         <hr>
         <section class="dashboard">
             <h1>Ajouter un livre : </h1>
-            <form id="formAjouter" class="form" action="/Bibliothecaire/accueil" method="post">
+            <form id="formAjouter" class="form" action="/Bibliothecaire/modifier" method="post">
                 <div class = "formGroup">
-                    <input type="text" placeholder="Titre" name="titre" required>
-                    <input type="text" placeholder="ISBN" name="isbn" required>
+                    <input type="text" name="isbn" value="<%= livre.getIsbn() %>" readonly>
+                    <input type="text" placeholder="Titre" name="titre" value="<%= livre.getTitre() %>" required>
                 </div>
                 <div class="formGroup">
-                    <textarea rows="7" cols="50" name="description" placeholder="Description" required></textarea>
+                    <textarea rows="7" cols="50" name="description" placeholder="Description" required><%= livre.getDescription() %></textarea>
                 </div>
                 <div class="formGroup">
-                    <input type="number" placeholder="Quantité disponible" name="quantite" required>
-                    <input type="submit" value="Ajouter">
+                    <input type="number" placeholder="Quantité" name="quantite" value="<%= livre.getQuantite() %>" required>
+                    <input type="submit" value="Modifier">
                 </div>
             </form>
         </section>

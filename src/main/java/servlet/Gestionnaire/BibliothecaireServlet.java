@@ -45,7 +45,8 @@ public class BibliothecaireServlet extends HttpServlet
         try
         {
             if (DAO.Bibliothecaire.idExists(mail) || DAO.EtudiantInterne.idExists(mail)
-                    || DAO.EtudiantExterne.idExists(mail) || DAO.Enseignant.idExists(mail))
+                    || DAO.EtudiantExterne.idExists(mail) || DAO.Enseignant.idExists(mail)
+                    || DAO.Gestionnaire.idExists(mail))
             {
                 String errorMessage = "Un compte avec cette adresse mail existe déjà !";
                 request.setAttribute("errorMessage", errorMessage);

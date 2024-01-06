@@ -11,19 +11,31 @@ import util.BDD;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
-
-@WebServlet(name = "AjouterLivreServlet", urlPatterns = "/Bibliothecaire/livre")
-public class AjouterLivre extends HttpServlet
+@WebServlet(name = "BibliothecaireModifierServlet", urlPatterns = "/Bibliothecaire/modifier")
+public class BibliothecaireModifierServlet extends HttpServlet
 {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
     {
+        String isbn = req.getParameter("isbn");
 
-        req.getRequestDispatcher("/Bibliothecaire/AjoutLivre.jsp").forward(req,resp);
+        BDD.initialisation();
+
+        try {
+            Livre livre = DAO.Livre.queryForId(isbn);
+
+            req.setAttribute("livre", livre);
+
+            BDD.fermeture();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        req.getRequestDispatcher("/Bibliothecaire/modifier.jsp").forward(req,resp);
     }
-
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
@@ -32,18 +44,20 @@ public class AjouterLivre extends HttpServlet
         String description=req.getParameter("description");
         String isbn=req.getParameter("isbn");
         int quantite= Integer.parseInt(req.getParameter("quantite"));
-        int quantiteDispo= Integer.parseInt(req.getParameter("quantiteDispo"));
 
         BDD.initialisation();
         try
         {
-            DAO.Livre.createIfNotExists(new Livre(titre,description,isbn,quantite,quantiteDispo));
+            Livre livre = DAO.Livre.queryForId(isbn);
+            Livre nouveauLivre = new Livre(titre, description, isbn, quantite, livre.getQuantiteDisponible());
+            DAO.Livre.update(nouveauLivre);
 
             BDD.fermeture();
-        }catch (SQLException e){
-
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
 
+        resp.sendRedirect("/Bibliothecaire/accueil");
     }
 
 }
