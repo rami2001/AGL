@@ -10,7 +10,7 @@
 <head>
     <title>BibTarga</title>
     <link rel="stylesheet" href="../styles/all.css">
-
+    <script src="../jquery-3.7.1.js" ></script>
 </head>
 <body>
     <nav class="nav">
@@ -35,7 +35,7 @@
     </nav>
     <h1>ajout livre page</h1>
 
-    <form class="form" action="ajouter" method="post">
+    <form id="formAjouter" class="form" action="ajouter" method="post">
         <div class = "formGroup">
             <input type="text" placeholder="Adresse e-mail" name="titre" required>
             <input type="text" placeholder="Adresse e-mail" name="description" required>
@@ -45,5 +45,23 @@
             <input type="submit" value="Ajouter">
         </div>
     </form>
+    <script>
+        $(document).ready(function() {
+            // Écoute de la soumission du formulaire
+            $("#formAjouter").submit(function(event) {
+                // Empêche le comportement par défaut du formulaire (rechargement de la page)
+                event.preventDefault();
+
+                // Envoie de la requête POST avec les données du formulaire
+                $.post("/Bibliothecaire/livre", $(this).serialize(), function(data) {
+                    // Traitement à effectuer lorsque la requête est réussie
+                    console.log("Réponse du serveur :", data);
+                }).fail(function() {
+                    // Traitement en cas d'échec de la requête
+                    console.error("Échec de la requête AJAX");
+                });
+            });
+        });
+    </script>
 </body>
 </html>

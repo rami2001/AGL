@@ -1,10 +1,12 @@
 package servlet.Bibliothecaire;
 
+import dao.DAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import model.Livre;
 import util.BDD;
 
 import java.io.IOException;
@@ -32,11 +34,15 @@ public class AjouterLivre extends HttpServlet
         int quantite= Integer.parseInt(req.getParameter("quantite"));
         int quantiteDispo= Integer.parseInt(req.getParameter("quantiteDispo"));
 
-        System.out.println(titre);
-        System.out.println(description);
+        BDD.initialisation();
+        try
+        {
+            DAO.Livre.createIfNotExists(new Livre(titre,description,isbn,quantite,quantiteDispo));
 
-//        BDD.initialisation();
+            BDD.fermeture();
+        }catch (SQLException e){
 
+        }
 
     }
 
