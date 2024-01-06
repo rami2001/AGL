@@ -29,7 +29,7 @@ public class ConnexionServlet extends HttpServlet
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         String mail = request.getParameter("mail");
         String motDePasse = request.getParameter("motDePasse");
