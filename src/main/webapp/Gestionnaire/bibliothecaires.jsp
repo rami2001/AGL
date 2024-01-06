@@ -28,20 +28,17 @@
 </head>
 <body>
 <nav class="nav">
-    <a href="accueil.jsp" nav-item = "Compte">
+    <a href="/Gestionnaire/accueil" nav-item = "Compte">
         <i class="bi bi-person"></i>
     </a>
     <a href="" class="active" nav-item = "Bibliothécaires">
         <i class="bi bi-person-add"></i>
     </a>
-    <a href="inscriptions.jsp" nav-item = "Inscriptions">
+    <a href="/Gestionnaire/inscriptions" nav-item = "Inscriptions">
         <i class="bi bi-person-check"></i>
     </a>
-    <a href="renouvellements.jsp" nav-item = "Renouvellements">
+    <a href="/Gestionnaire/renouvellements" nav-item = "Renouvellements">
         <i class="bi bi-coin"></i>
-    </a>
-    <a href="penalisations.jsp" nav-item = "Pénalisations">
-        <i class="bi bi-exclamation-triangle"></i>
     </a>
     <a href="/deconnexion" nav-item = "Déconnexion">
         <i class="bi bi-box-arrow-left"></i>
@@ -58,6 +55,7 @@
     <hr>
 
     <section class="dashboard">
+        <h2>Ajouter un bibliothécaire : </h2>
         <form class="form" action="bibliothecaires" method="post">
             <div class = "formGroup">
                 <input type="text" placeholder="Adresse e-mail" name="mail" required>
@@ -68,13 +66,9 @@
 
         <hr>
 
+        <h1>Bibliothécaires : </h1>
+
         <table>
-            <thead>
-            <tr>
-                <th>E-Mail</th>
-                <th>Action</th>
-            </tr>
-            </thead>
             <tbody>
             <%
                 List<Bibliothecaire> bibliothecaires = (List<Bibliothecaire>) request.getAttribute("bibliothecaires");

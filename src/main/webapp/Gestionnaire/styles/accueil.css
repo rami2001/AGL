@@ -42,6 +42,15 @@ form > button i:hover {
     color: crimson;
 }
 
+form > button i.bi-check-circle {
+    color: var(--vert);
+}
+
+
+form > button i.bi-check-circle:hover {
+    color: seagreen;
+}
+
 .dashboard > h1 {
     margin-bottom: 2rem;
     color: var(--vert);

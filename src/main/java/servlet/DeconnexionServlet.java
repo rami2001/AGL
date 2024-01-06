@@ -22,7 +22,6 @@ public class DeconnexionServlet extends HttpServlet
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException
     {
         Session.deconnexion();
-        System.out.println(Session.getUtilisateur());
         response.sendRedirect("index.jsp");
     }
 

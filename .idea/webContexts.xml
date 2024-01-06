@@ -5,6 +5,7 @@
       <map>
         <entry key="file://$PROJECT_DIR$/src/main/webapp/Etudiant/accueil.jsp" value="file://$PROJECT_DIR$/src/main/webapp/Etudiant" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/Gestionnaire/bibliothecaires.jsp" value="file://$PROJECT_DIR$/src/main/webapp/Gestionnaire" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/Gestionnaire/inscriptions.jsp" value="file://$PROJECT_DIR$/src/main/webapp/Gestionnaire" />
       </map>
     </option>
   </component>

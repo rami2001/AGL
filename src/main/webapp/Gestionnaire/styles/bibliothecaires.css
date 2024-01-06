@@ -41,9 +41,15 @@ form > button[type=submit] {
     font-weight: bold;
     border: none;
     outline: none;
-    font-size: 32px;
+    font-size: 26px;
 }
 
 form > button i:hover {
     color: crimson;
+}
+
+.dashboard > h1 {
+    margin-bottom: 2rem;
+    color: var(--vert);
+    text-align: center;
 }

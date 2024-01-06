@@ -17,6 +17,9 @@ import model.Gestionnaire;
 import model.Livre;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -84,8 +87,17 @@ public class BDD
 
     public static String getDate(Date date)
     {
-        String pattern = "dd-MM-yyyy";
+        String pattern = "dd/MM/yyyy HH:mm";
         return new SimpleDateFormat(pattern).format(date);
+    }
+
+    public static Date plusAnnees(Date date, int annee) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+
+        calendar.add(Calendar.YEAR, annee);
+
+        return calendar.getTime();
     }
 
     public static String HashMotDePasse(String motDePasse)

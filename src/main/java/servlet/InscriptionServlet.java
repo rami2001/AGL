@@ -1,7 +1,6 @@
 package servlet;
 
 import jakarta.servlet.RequestDispatcher;
-import model.Etudiant;
 import model.Enseignant;
 import model.EtudiantExterne;
 import model.EtudiantInterne;
@@ -58,7 +57,6 @@ public class InscriptionServlet extends HttpServlet
         String type = request.getParameter("type");
 
         LocalDateTime ld = LocalDateTime.now();
-
 
         Date date = Date.from(ld.atZone(ZoneId.systemDefault()).toInstant());
 

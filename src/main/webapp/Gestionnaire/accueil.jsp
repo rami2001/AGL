@@ -22,20 +22,17 @@
 </head>
 <body>
 <nav class="nav">
-    <a href="" class="active" nav-item = "Mon compte">
+    <a href="" class="active" nav-item = "Compte">
         <i class="bi bi-person"></i>
     </a>
     <a href="/Gestionnaire/bibliothecaires" nav-item = "Bibliothécaires">
         <i class="bi bi-person-add"></i>
     </a>
-    <a href="/Gestionnaire/inscription" nav-item = "Inscriptions">
+    <a href="/Gestionnaire/inscriptions" nav-item = "Inscriptions">
         <i class="bi bi-person-check"></i>
     </a>
-    <a href="renouvellements.jsp" nav-item = "Renouvellements">
+    <a href="/Gestionnaire/renouvellements" nav-item = "Renouvellements">
         <i class="bi bi-coin"></i>
-    </a>
-    <a href="penalisations.jsp" nav-item = "Pénalisations">
-        <i class="bi bi-exclamation-triangle"></i>
     </a>
     <a href="/deconnexion" nav-item = "Déconnexion">
         <i class="bi bi-box-arrow-left"></i>
@@ -57,20 +54,6 @@
         <h1>Etudiants : </h1>
         <div id="etudiants">
             <table class="table">
-                <thead>
-                <tr>
-                    <th>E-Mail</th>
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>Statut</th>
-                    <th>Forfait</th>
-                    <th>Date Inscription</th>
-                    <th>Date Dernier Paiement</th>
-                    <th>Pénalisation</th>
-                    <th>Pénaliser</th>
-                    <th>Supprimer</th>
-                </tr>
-                </thead>
                 <tbody id="etudiantsTable" class="collapse">
                 <%  if (etudiantsInternes != null) {
                     for (EtudiantInterne etudiant : etudiantsInternes) { %>
@@ -83,20 +66,26 @@
                     <td><%= BDD.getDate(etudiant.getDateInscription()) %></td>
                     <td><%= (etudiant.getDernierPaiement() == null) ? "N\\A" : BDD.getDate(etudiant.getDernierPaiement()) %></td>
                     <td>
-                        <%= etudiant.estPenalise() ? "Oui" : "Non" %>
+                        <%= etudiant.estPenalise() ? "Oui" : "Non pénalisé" %>
                     </td>
                     <td>
                         <form method="post" action="penaliser">
                             <input type="hidden" name="mail" value="<%= etudiant.getMail() %>">
-                            <button type="submit" <%= etudiant.estPenalise() ? "type = hidden" : "" %>>
+                            <% if(etudiant.estPenalise()) { %>
+                            <button type="submit">
+                                <i class="bi bi-check-circle"></i>
+                            </button>
+                            <% } else { %>
+                            <button type="submit">
                                 <i class="bi bi-exclamation-triangle"></i>
                             </button>
+                            <% } %>
                         </form>
                     </td>
                     <td>
                         <form method="post" action="supprimer">
                             <input type="hidden" name="mail" value="<%= etudiant.getMail() %>">
-                            <button type="submit" <%= etudiant.estPenalise() ? "type = hidden" : "" %>>
+                            <button type="submit">
                                 <i class="bi bi-person-x"></i>
                             </button>
                         </form>
@@ -111,18 +100,6 @@
         <h1>Etudiants externes : </h1>
         <div id="externes">
             <table class="table">
-                <thead>
-                <tr>
-                    <th>E-Mail</th>
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>Statut</th>
-                    <th>Date Inscription</th>
-                    <th>Pénalisation</th>
-                    <th>Pénaliser</th>
-                    <th>Supprimer</th>
-                </tr>
-                </thead>
                 <tbody id="externesTable" class="collapse">
                 <% if (etudiantsExternes != null)
                 {
@@ -134,14 +111,20 @@
                     <td><%= etudiant.aPaye() ? "Inscris" : "En attente"%></td>
                     <td><%= BDD.getDate(etudiant.getDateInscription()) %></td>
                     <td>
-                        <%= etudiant.estPenalise() ? "Oui" : "Non" %>
+                        <%= etudiant.estPenalise() ? "Oui" : "Non pénalisé" %>
                     </td>
                     <td>
                         <form method="post" action="penaliser">
                             <input type="hidden" name="mail" value="<%= etudiant.getMail() %>">
-                            <button type="submit" <%= etudiant.estPenalise() ? "type = hidden" : "" %>>
+                            <% if(etudiant.estPenalise()) { %>
+                            <button type="submit">
+                                <i class="bi bi-check-circle"></i>
+                            </button>
+                            <% } else { %>
+                            <button type="submit">
                                 <i class="bi bi-exclamation-triangle"></i>
                             </button>
+                            <% } %>
                         </form>
                     </td>
                     <td>
@@ -162,15 +145,6 @@
         <h1>Enseignants : </h1>
         <div id="enseignants">
             <table class="table">
-                <thead>
-                <tr>
-                    <th>E-Mail</th>
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>Date Inscription</th>
-                    <th>Supprimer</th>
-                </tr>
-                </thead>
                 <tbody id="enseignantsTable" class="collapse">
                 <% if (enseignants != null)
                 {
@@ -183,7 +157,7 @@
                     <td>
                         <form method="post" action="supprimer">
                             <input type="hidden" name="mail" value="<%= enseignant.getMail() %>">
-                            <button type="submit"%>>
+                            <button type="submit">
                                 <i class="bi bi-person-x"></i>
                             </button>
                         </form>

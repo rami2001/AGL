@@ -1,5 +1,9 @@
 <%@ page import="model.Gestionnaire" %>
-<%@ page import="util.Session" %><%--
+<%@ page import="util.Session" %>
+<%@ page import="model.EtudiantInterne" %>
+<%@ page import="java.util.List" %>
+<%@ page import="model.EtudiantExterne" %>
+<%@ page import="util.BDD" %><%--
   Created by IntelliJ IDEA.
   User: Rami
   Date: 05/01/2024
@@ -17,20 +21,17 @@
 </head>
 <body>
 <nav class="nav">
-    <a href="accueil.jsp" nav-item = "Mon compte">
+    <a href="/Gestionnaire/accueil" nav-item = "Compte">
         <i class="bi bi-person"></i>
     </a>
-    <a href="bibliothecaires.jsp" nav-item = "Bibliothécaires">
+    <a href="/Gestionnaire/bibliothecaires" nav-item = "Bibliothécaires">
         <i class="bi bi-person-add"></i>
     </a>
     <a href="" class="active" nav-item = "Inscriptions">
         <i class="bi bi-person-check"></i>
     </a>
-    <a href="renouvellements.jsp" nav-item = "Renouvellements">
+    <a href="/Gestionnaire/renouvellements" nav-item = "Renouvellements">
         <i class="bi bi-coin"></i>
-    </a>
-    <a href="penalisations.jsp" nav-item = "Pénalisations">
-        <i class="bi bi-exclamation-triangle"></i>
     </a>
     <a href="/deconnexion" nav-item = "Déconnexion">
         <i class="bi bi-box-arrow-left"></i>
@@ -40,10 +41,63 @@
 <main class="page">
     <%
         Gestionnaire gestionnaire = (Gestionnaire) Session.getUtilisateur();
+        List<EtudiantInterne> etudiantsInternes = (List<EtudiantInterne>) request.getAttribute("etudiantsInternes");
+        List<EtudiantExterne> etudiantsExternes = (List<EtudiantExterne>) request.getAttribute("etudiantsExternes");
     %>
     <h1 class="titre">Gestion des inscriptions.</h1>
     <hr>
     <section class="dashboard">
+        <h1>Etudiants : </h1>
+        <div id="etudiants">
+            <table class="table">
+                <tbody id="etudiantsTable" class="collapse">
+                <%  if (etudiantsInternes != null) {
+                    for (EtudiantInterne etudiant : etudiantsInternes) { %>
+                <tr>
+                    <td><%= etudiant.getMail() %></td>
+                    <td><%= etudiant.getNom() %></td>
+                    <td><%= etudiant.getPrenom() %></td>
+                    <td><%= BDD.getDate(etudiant.getDateInscription()) %></td>
+                    <td>
+                        <form method="post" action="inscriptions">
+                            <input type="hidden" name="mail" value="<%= etudiant.getMail() %>">
+                            <button type="submit">
+                                <i class="bi bi-check-circle"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                <% }
+                } %>
+                </tbody>
+            </table>
+        </div>
+        <hr>
+        <h1>Etudiants externes : </h1>
+        <div id="externes">
+            <table class="table">
+                <tbody id="externesTable" class="collapse">
+                <%  if (etudiantsExternes != null) {
+                    for (EtudiantExterne etudiant : etudiantsExternes) { %>
+                <tr>
+                    <td><%= etudiant.getMail() %></td>
+                    <td><%= etudiant.getNom() %></td>
+                    <td><%= etudiant.getPrenom() %></td>
+                    <td><%= BDD.getDate(etudiant.getDateInscription()) %></td>
+                    <td>
+                        <form method="post" action="inscriptions">
+                            <input type="hidden" name="mail" value="<%= etudiant.getMail() %>">
+                            <button type="submit">
+                                <i class="bi bi-check-circle"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                <% }
+                } %>
+                </tbody>
+            </table>
+        </div>
     </section>
 </main>
 </body>
