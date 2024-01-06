@@ -13,9 +13,6 @@ import util.Session;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
 import java.util.List;
 
 @WebServlet(name = "ConnexionServlet", urlPatterns = "/connexion")
