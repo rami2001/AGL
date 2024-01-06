@@ -13,9 +13,6 @@ import util.Session;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
 import java.util.List;
 
 @WebServlet(name = "ConnexionServlet", urlPatterns = "/connexion")
@@ -29,7 +26,7 @@ public class ConnexionServlet extends HttpServlet
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         String mail = request.getParameter("mail");
         String motDePasse = request.getParameter("motDePasse");

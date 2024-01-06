@@ -1,6 +1,7 @@
 <%@ page import="util.Session" %>
 <%@ page import="model.EtudiantInterne" %>
-<%@ page import="java.util.Date" %><%--
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %><%--
   Created by IntelliJ IDEA.
   User: Rami
   Date: 05/01/2024
@@ -50,7 +51,17 @@
     <section class="dashboard">
         <div class="item">
             <h2>
-                <p>Date d'inscription : </p> <% out.println(dateInscription.toString()); %>
+                <p>Date d'inscription : </p>
+                <%
+                    SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+
+                    // Utilisez la méthode format pour obtenir la date formatée en tant que chaîne
+                    String dateFormatee = format.format(dateInscription);
+
+                    // Affichez la date formatée
+                    out.println(dateFormatee);
+                %>
+
             </h2>
         </div>
         <div class="item statut">
