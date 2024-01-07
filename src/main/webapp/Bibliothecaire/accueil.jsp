@@ -57,7 +57,7 @@
                     <textarea rows="7" cols="50" name="description" placeholder="Description" required></textarea>
                 </div>
                 <div class="formGroup">
-                    <input type="number" placeholder="Quantité disponible" name="quantite" required>
+                    <input type="number" placeholder="Quantité disponible" name="quantite" required min="1" >
                     <input type="submit" value="Ajouter">
                 </div>
             </form>
