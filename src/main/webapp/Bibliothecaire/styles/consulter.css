@@ -1,3 +1,54 @@
-.dashboard > * {
+.dashboard {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    align-items: center;
+    font-size: 28px;
+}
+
+.dashboard > .info,
+.dashboard > .description {
+    min-height: 70vh;
+    min-width: 40%;
+}
+
+.dashboard > .description {
+    background-color: var(--vert);
+    color: var(--blanc);
+    border-radius: 18px;
+    padding: 1.6rem 1.6rem;
+}
+
+.action {
+    display: flex;
+    gap: 4.5rem;
+    align-items: center;
+    justify-content: center;
+    min-width: 100%;
+}
+
+.action > form > button {
+    background: transparent;
+    outline: none;
+    border: none;
+}
+
+#mod,
+#supp {
     font-size: 38px;
+    color: var(--noir);
+    cursor: pointer;
+}
+
+#mod:hover,
+#supp:hover {
+    cursor: pointer;
+}
+
+#mod:hover {
+    color: var(--vert);
+}
+
+#supp:hover {
+    color: crimson;
 }

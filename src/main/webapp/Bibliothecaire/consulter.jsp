@@ -46,18 +46,37 @@
 
 <main class="page">
 
-    <h1>Titre : <%= livre.getTitre() %></h1>
+    <h1>ISBN : <%= livre.getIsbn() %></h1>
 
     <hr>
     <section class="dashboard">
-        <h1>ISBN : <%= livre.getIsbn() %></h1>
-        <h1>Description : <%= livre.getDescription() %></h1>
-        <h1>Quantité : <%= livre.getQuantite() %></h1>
-        <h1>Quantité disponible : <%= livre.getQuantiteDisponible() %></h1>
-        <a href="/Bibliothecaire/modifier?isbn=<%= livre.getIsbn() %>" class="btn">Modifier</a>
-        <form>
+        <div class="info">
+            <h1><%= livre.getTitre() %></h1>
 
-        </form>
+            <br>
+
+            <h3>Quantité : <%= livre.getQuantite() %></h3>
+            <h3>Quantité disponible : <%= livre.getQuantiteDisponible() %></h3>
+
+            <br>
+
+            <div class="action">
+                <a href="/Bibliothecaire/modifier?isbn=<%= livre.getIsbn() %>" class="btn">
+                    <i id="mod" class="bi bi-pencil-square"></i>
+                </a>
+                <form method="post" action="consulter">
+                    <input type="hidden" name="isbn" value="<%= livre.getIsbn() %>">
+                    <button type="submit" class="btn btn-link p-0">
+                        <i id="supp" class="bi bi-file-earmark-x"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="description">
+            <h1>Description : </h1>
+            <br>
+            <h3><%= livre.getDescription() %></h3>
+        </div>
     </section>
 </main>
 

@@ -33,4 +33,24 @@ public class BibliothecaireConsulterServlet extends HttpServlet
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
+    {
+        String isbn = req.getParameter("isbn");
+
+        BDD.initialisation();
+        try
+        {
+            DAO.Livre.deleteById(isbn);
+            BDD.fermeture();
+        } catch (SQLException e)
+        {
+            throw new RuntimeException(e);
+        }
+
+        System.out.println("redirect");
+        resp.sendRedirect("/Bibliothecaire/accueil");
+    }
+
 }
