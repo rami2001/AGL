@@ -41,9 +41,9 @@ public class RenouvellementServlet extends HttpServlet
 
                 Date maintenant = Date.from(ld.atZone(ZoneId.systemDefault()).toInstant());
                 Date date = etudiant.getDernierPaiement();
-                Date paiement = BDD.plusAnnees(date, 1);
+                Date datePaiement = BDD.plusAnnees(date, 1);
 
-                if (maintenant.after(paiement))
+                if (maintenant.after(datePaiement))
                 {
                     etudiantsInternesEnRetard.add(etudiant);
                 }

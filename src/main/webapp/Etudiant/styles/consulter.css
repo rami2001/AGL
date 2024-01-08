@@ -1,0 +1,35 @@
+.dashboard {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    align-items: center;
+    font-size: 28px;
+}
+
+.dashboard > .info,
+.dashboard > .description {
+    min-height: 70vh;
+    min-width: 40%;
+}
+
+.dashboard > .description {
+    background-color: var(--vert);
+    color: var(--blanc);
+    border-radius: 18px;
+    padding: 1.6rem 1.6rem;
+}
+
+input[type=submit] {
+    background-color: transparent;
+    border-radius: 6px;
+    padding: 12px 32px;
+    font-size: 24px;
+    color: var(--vert);
+    cursor: pointer;
+    border: 2px solid var(--vert);
+}
+
+input[type=submit]:hover {
+    background-color: var(--vert);
+    color: var(--blanc);
+}

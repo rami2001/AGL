@@ -72,7 +72,7 @@ public class ConnexionServlet extends HttpServlet
             {
                 Enseignant enseignant = enseignants.get(0);
                 Session.connexion(enseignant);
-                redirection = "/Enseignant/accueil.jsp";
+                redirection = "/Enseignant/accueil";
             }
 
             List<EtudiantInterne> etudiantsInternes = DAO.EtudiantInterne.queryBuilder()
@@ -84,7 +84,7 @@ public class ConnexionServlet extends HttpServlet
             if (!etudiantsInternes.isEmpty()) {
                 EtudiantInterne etudiantInterne = etudiantsInternes.get(0);
                 Session.connexion(etudiantInterne);
-                redirection = "/Etudiant/accueil.jsp";
+                redirection = "/Etudiant/accueil";
             }
 
             List<EtudiantExterne> etudiantsExternes = DAO.EtudiantExterne.queryBuilder()
@@ -96,7 +96,7 @@ public class ConnexionServlet extends HttpServlet
             if (!etudiantsExternes.isEmpty()) {
                 EtudiantExterne etudiantExterne = etudiantsExternes.get(0);
                 Session.connexion(etudiantExterne);
-                redirection = "/Externe/accueil.jsp";
+                redirection = "/Externe/accueil";
             }
             
             BDD.fermeture();

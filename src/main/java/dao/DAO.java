@@ -9,6 +9,7 @@ import model.EtudiantExterne;
 import model.EtudiantInterne;
 import model.Gestionnaire;
 import model.Livre;
+import model.Retour;
 
 public class DAO
 {
@@ -20,5 +21,6 @@ public class DAO
     public static Dao<EtudiantExterne, String> EtudiantExterne= null;
     public static Dao<Livre, String> Livre= null;
     public static Dao<Emprunt, Long> Emprunt = null;
+    public static Dao<Retour, Long> Retour = null;
 
 }

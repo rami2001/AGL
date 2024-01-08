@@ -3,7 +3,10 @@ package model;
 import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
+import util.BDD;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Date;
 
 @DatabaseTable(tableName = "etudiantInterne")
@@ -34,6 +37,21 @@ public class EtudiantInterne extends Etudiant
         this.dernierPaiement = dernierPaiement;
     }
 
-    
+    public void checkDernierPaiement()
+    {
+        if (this.aPaye)
+        {
+            LocalDateTime ld = LocalDateTime.now();
+
+            Date maintenant = Date.from(ld.atZone(ZoneId.systemDefault()).toInstant());
+            Date date = this.getDernierPaiement();
+            Date datePaiement = BDD.plusAnnees(date, 1);
+
+            if (maintenant.after(datePaiement))
+            {
+                this.aPaye(false);
+            }
+        }
+    }
     
 }

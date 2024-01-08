@@ -8,13 +8,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 
-import model.Bibliothecaire;
-import model.Emprunt;
-import model.Enseignant;
-import model.EtudiantExterne;
-import model.EtudiantInterne;
-import model.Gestionnaire;
-import model.Livre;
+import model.*;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -56,6 +50,7 @@ public class BDD
             DAO.EtudiantExterne = DaoManager.createDao(connexion, EtudiantExterne.class);
             DAO.Livre = DaoManager.createDao(connexion, Livre.class);
             DAO.Emprunt = DaoManager.createDao(connexion, Emprunt.class);
+            DAO.Retour = DaoManager.createDao(connexion, Retour.class);
 
             // Creation des tables
             TableUtils.createTableIfNotExists(connexion, Gestionnaire.class);
@@ -65,6 +60,7 @@ public class BDD
             TableUtils.createTableIfNotExists(connexion, EtudiantExterne.class);
             TableUtils.createTableIfNotExists(connexion, Livre.class);
             TableUtils.createTableIfNotExists(connexion, Emprunt.class);
+            TableUtils.createTableIfNotExists(connexion, Retour.class);
 
             Gestionnaire gestionnaire = new Gestionnaire("admin@bibtarga.dz", "admin");
             DAO.Gestionnaire.createIfNotExists(gestionnaire);
@@ -87,7 +83,7 @@ public class BDD
 
     public static String getDate(Date date)
     {
-        String pattern = "dd/MM/yyyy HH:mm";
+        String pattern = "dd/MM/yyyy (HH:mm)";
         return new SimpleDateFormat(pattern).format(date);
     }
 

@@ -11,7 +11,7 @@ public class Emprunt
 {
     
     @DatabaseField(allowGeneratedIdInsert = true, generatedId = true)
-    private long id;
+    protected long id;
     @DatabaseField(canBeNull = false, foreign = true, foreignAutoRefresh = true)
     private Abonne abonne;
     @DatabaseField(canBeNull = false, foreign = true, foreignAutoRefresh = true)

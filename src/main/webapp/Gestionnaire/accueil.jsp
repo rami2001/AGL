@@ -61,13 +61,11 @@
                     <td><%= etudiant.getMail() %></td>
                     <td><%= etudiant.getNom() %></td>
                     <td><%= etudiant.getPrenom() %></td>
-                    <td><%= (etudiant.getDernierPaiement() == null) ? "Inscris" : "En attente"%></td>
+                    <td><%= (etudiant.getDernierPaiement() == null) ? "En attente" : "Inscrit"%></td>
                     <td><%= etudiant.aPaye() ? "Payé" : "Non payé" %></td>
                     <td><%= BDD.getDate(etudiant.getDateInscription()) %></td>
                     <td><%= (etudiant.getDernierPaiement() == null) ? "N\\A" : BDD.getDate(etudiant.getDernierPaiement()) %></td>
-                    <td>
-                        <%= etudiant.estPenalise() ? "Oui" : "Non pénalisé" %>
-                    </td>
+                    <td><%= etudiant.estPenalise() ? "Pénalisé" : "Non pénalisé" %></td>
                     <td>
                         <form method="post" action="penaliser">
                             <input type="hidden" name="mail" value="<%= etudiant.getMail() %>">
@@ -111,7 +109,7 @@
                     <td><%= etudiant.aPaye() ? "Inscris" : "En attente"%></td>
                     <td><%= BDD.getDate(etudiant.getDateInscription()) %></td>
                     <td>
-                        <%= etudiant.estPenalise() ? "Oui" : "Non pénalisé" %>
+                        <%= etudiant.estPenalise() ? "Pénalisé" : "Non pénalisé" %>
                     </td>
                     <td>
                         <form method="post" action="penaliser">

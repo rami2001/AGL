@@ -29,6 +29,11 @@ public class AccueilServlet extends HttpServlet
         try
         {
             List<EtudiantInterne> etudiantsInternes = DAO.EtudiantInterne.queryForAll();
+            for (EtudiantInterne etudiantInterne : etudiantsInternes)
+            {
+                etudiantInterne.checkDernierPaiement();
+            }
+
             request.setAttribute("etudiantsInternes", etudiantsInternes);
 
             List<EtudiantExterne> etudiantsExternes = DAO.EtudiantExterne.queryForAll();
