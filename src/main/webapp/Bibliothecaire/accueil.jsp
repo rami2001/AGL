@@ -16,7 +16,7 @@
 </head>
 <body>
     <nav class="nav">
-        <a href="" nav-item = "Ajouter" class="active">
+        <a href="/Bibliothecaire/accueil" nav-item = "Ajouter" class="active">
             <i class="bi bi-plus-circle"></i>
         </a>
         <a href="/Bibliothecaire/livres" nav-item = "Livres">
@@ -24,9 +24,6 @@
         </a>
         <a href="/Bibliothecaire/emprunts" nav-item = "Emprunts">
             <i class="bi bi-bookmark"></i>
-        </a>
-        <a href="/Bibliothecaire/demandes" nav-item = "Demandes">
-            <i class="bi bi-bookmark-plus"></i>
         </a>
         <a href="/Bibliothecaire/historique" nav-item = "Historique">
             <i class="bi bi-clock-history"></i>

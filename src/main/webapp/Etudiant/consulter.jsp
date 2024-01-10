@@ -9,6 +9,14 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%
+    EtudiantInterne etudiant = (EtudiantInterne) Session.getUtilisateur();
+    etudiant.checkDernierPaiement();
+
+    Livre livre = (Livre) request.getAttribute("livre");
+%>
+
 <html>
 <head>
     <title>BibTarga</title>
@@ -24,7 +32,7 @@
     <a href="" class="active" nav-item = "Livres">
         <i class="bi bi-book"></i>
     </a>
-    <a href="/Etudiant/emprunts" nav-item = "Emprunts">
+    <a href="/Etudiant/emprunts?mail=<%= etudiant.getMail() %>" nav-item = "Emprunts">
         <i class="bi bi-bookmark"></i>
     </a>
     <a href="/Etudiant/historique" nav-item = "Historique">
@@ -34,13 +42,6 @@
         <i class="bi bi-box-arrow-left"></i>
     </a>
 </nav>
-
-<%
-    EtudiantInterne etudiant = (EtudiantInterne) Session.getUtilisateur();
-    etudiant.checkDernierPaiement();
-
-    Livre livre = (Livre) request.getAttribute("livre");
-%>
 
 <main class="page">
 

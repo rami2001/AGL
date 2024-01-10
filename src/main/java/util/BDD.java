@@ -55,6 +55,7 @@ public class BDD
             // Creation des tables
             TableUtils.createTableIfNotExists(connexion, Gestionnaire.class);
             TableUtils.createTableIfNotExists(connexion, Bibliothecaire.class);
+            TableUtils.createTableIfNotExists(connexion, Abonne.class);
             TableUtils.createTableIfNotExists(connexion, Enseignant.class);
             TableUtils.createTableIfNotExists(connexion, EtudiantInterne.class);
             TableUtils.createTableIfNotExists(connexion, EtudiantExterne.class);

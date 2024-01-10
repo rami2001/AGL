@@ -27,9 +27,6 @@
     <a href="/Bibliothecaire/emprunts" nav-item = "Emprunts">
         <i class="bi bi-bookmark"></i>
     </a>
-    <a href="/Bibliothecaire/demandes" nav-item = "Demandes">
-        <i class="bi bi-bookmark-plus"></i>
-    </a>
     <a href="/Bibliothecaire/historique" nav-item = "Historique">
         <i class="bi bi-clock-history"></i>
     </a>

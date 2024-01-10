@@ -31,7 +31,7 @@ public class Bibliothecaire extends Utilisateur
 		Date dateEmprunt = Date.from(ld.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
 		emprunt.setDateEmprunt(dateEmprunt);
 
-		ld.plusMonths(ENV.TEPMS_EMPRUNT);
+		ld = ld.plusMonths(ENV.TEPMS_EMPRUNT);
 
 		Date dateRetour = Date.from(ld.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
 		emprunt.setDateRetour(dateRetour);
@@ -43,7 +43,7 @@ public class Bibliothecaire extends Utilisateur
 
 		LocalDate ld = Instant.ofEpochMilli(dateRetour.getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
 
-		ld.plusMonths(mois);
+		ld = ld.plusMonths(mois);
 
 		dateRetour = Date.from(ld.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
 		emprunt.setDateRetour(dateRetour);
@@ -55,7 +55,7 @@ public class Bibliothecaire extends Utilisateur
 
 		LocalDate ld = Instant.ofEpochMilli(dateRetour.getTime()).atZone(ZoneId.systemDefault()).toLocalDate();
 
-		ld.plusMonths(ENV.PROLONGEMENT_EMPRUNT);
+		ld = ld.plusMonths(ENV.PROLONGEMENT_EMPRUNT);
 
 		dateRetour = Date.from(ld.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
 		emprunt.setDateRetour(dateRetour);

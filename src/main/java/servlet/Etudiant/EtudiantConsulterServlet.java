@@ -42,21 +42,15 @@ public class EtudiantConsulterServlet extends HttpServlet
         String isbn = req.getParameter("isbn");
         String mail = req.getParameter("mail");
 
-        System.out.println("REQUETE LANCEE");
-
         BDD.initialisation();
         try
         {
             Livre livre = DAO.Livre.queryForId(isbn);
             EtudiantInterne etudiantInterne = DAO.EtudiantInterne.queryForId(mail);
 
-            if (livre.getQuantite() > 0)
+            if (livre.getQuantite() > 0 && etudiantInterne.getEmprunts().size() < 3)
             {
-                System.out.println("ok");
-
                 Emprunt emprunt = new Emprunt();
-
-                livre.setQuantiteDisponible(livre.getQuantiteDisponible() - 1);
 
                 DAO.Livre.update(livre);
 
@@ -64,14 +58,15 @@ public class EtudiantConsulterServlet extends HttpServlet
                 emprunt.setAbonne(etudiantInterne);
 
                 DAO.Emprunt.createOrUpdate(emprunt);
-
-                resp.sendRedirect("/Etudiant/accueil");
             }
 
             BDD.fermeture();
         } catch (SQLException e)
         {
+            //
         }
+
+        resp.sendRedirect("/Etudiant/accueil");
     }
 
 }

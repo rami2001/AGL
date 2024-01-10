@@ -17,8 +17,9 @@ public class Retour extends Emprunt
 
     }
 
-    public Retour(Date date)
+    public Retour(boolean estAccepte, Date dateEmprunt, Date dateRetour, Date date)
     {
+        super(estAccepte, dateEmprunt, dateRetour);
         this.date = date;
     }
 
@@ -30,18 +31,6 @@ public class Retour extends Emprunt
     public void setDate(Date date)
     {
         this.date = date;
-    }
-
-    @Override
-    public long getId()
-    {
-        return id;
-    }
-
-    @Override
-    public void setId(long id)
-    {
-        this.id = id;
     }
 
 }

@@ -12,9 +12,9 @@ public class Emprunt
     
     @DatabaseField(allowGeneratedIdInsert = true, generatedId = true)
     protected long id;
-    @DatabaseField(canBeNull = false, foreign = true, foreignAutoRefresh = true)
+    @DatabaseField(canBeNull = false, foreign = true, foreignAutoRefresh = true, columnName = "mail")
     private Abonne abonne;
-    @DatabaseField(canBeNull = false, foreign = true, foreignAutoRefresh = true)
+    @DatabaseField(canBeNull = false, foreign = true, foreignAutoRefresh = true, columnName = "isbn")
     private Livre livre;
     @DatabaseField(dataType = DataType.BOOLEAN, canBeNull = false)
     private boolean estAccepte;

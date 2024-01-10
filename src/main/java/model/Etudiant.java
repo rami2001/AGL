@@ -49,7 +49,7 @@ public abstract class Etudiant extends Abonne
         {
             return DAO.Emprunt.queryBuilder()
                     .where()
-                    .eq("abonne_id", this.getMail())
+                    .eq("mail", this.getMail())
                     .query();
 
         } catch (SQLException e)

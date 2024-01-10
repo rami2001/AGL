@@ -11,6 +11,17 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<%
+    EtudiantInterne etudiant = (EtudiantInterne) Session.getUtilisateur();
+    etudiant.checkDernierPaiement();
+    String nom = etudiant.getNom();
+    String prenom = etudiant.getPrenom();
+    Date dateInscription = etudiant.getDateInscription();
+    boolean aPaye = etudiant.aPaye();
+    boolean estPenalise = etudiant.estPenalise();
+    Date dernierPaiement = etudiant.getDernierPaiement();
+%>
+
 <html>
 <head>
     <title>BibTarga</title>
@@ -26,7 +37,7 @@
     <a href="/Etudiant/livres" nav-item = "Livres">
         <i class="bi bi-book"></i>
     </a>
-    <a href="/Etudiant/emprunts" nav-item = "Emprunts">
+    <a href="/Etudiant/emprunts?mail=<%= etudiant.getMail() %>" nav-item = "Emprunts">
         <i class="bi bi-bookmark"></i>
     </a>
     <a href="/Etudiant/historique" nav-item = "Historique">
@@ -38,16 +49,6 @@
 </nav>
 
 <main class="page">
-    <%
-        EtudiantInterne etudiant = (EtudiantInterne) Session.getUtilisateur();
-        etudiant.checkDernierPaiement();
-        String nom = etudiant.getNom();
-        String prenom = etudiant.getPrenom();
-        Date dateInscription = etudiant.getDateInscription();
-        boolean aPaye = etudiant.aPaye();
-        boolean estPenalise = etudiant.estPenalise();
-        Date dernierPaiement = etudiant.getDernierPaiement();
-    %>
     <h1 class="titre">Bienvenue, <%= nom %> <%= prenom %>.</h1>
     <hr>
     <section class="dashboard">
